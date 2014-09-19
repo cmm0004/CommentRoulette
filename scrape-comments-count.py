@@ -3,6 +3,18 @@ import re
 import urllib
 from collections import Counter
 import sys
+from datetime import time
+
+def merge(d1, d2, merge_fn=lambda x,y:y):
+    
+
+    result = d1
+    for k,v in d2.iteritems():
+        if k in result:
+            result[k] = merge_fn(result[k], v)
+        else:
+            result[k] = v
+    return result
 
 def scrub(comment):
     
@@ -32,7 +44,7 @@ def run():
         for x in result:
            lst_of_comments.append(scrub(x))
     items = count(lst_of_comments)
-    print reduce_dict(items)
+    return reduce_dict(items)
 
 def reduce_dict(items):
     #there has to be a smarter way to do this:
@@ -51,9 +63,18 @@ def reduce_dict(items):
             specific[key] = value
     return specific
     
-            
-        
+iters = 0
+words_of_the_day = {}
+while iters < 10:
+    if words_of_the_day:
+        merge(words_of_the_day, run(), lambda x,y: x+y)
+    else:
+        words_of_the_day = run()
+
+    time.sleep(5)
+    print words_of_the_day
+    iters += 1
             
 
-run()
+
 
