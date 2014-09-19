@@ -17,8 +17,9 @@ def count(lst):
       s = string.split()
       countlst += s
     return Counter(countlst)
-
+    
 def run():
+ 
     socket = urllib.urlopen("http://www.reddit.com/r/" + sys.argv[1] + "/comments/")
     subreddit = socket.geturl()
     
@@ -39,7 +40,7 @@ def reduce_dict(items):
                 'it','for','not', 'is', 'just', 'even', 'here', 'you', 'should', 'their',
                     'only', 'when', 'after', 'then', 'than', 'those', 'there', 'has',
                     'been', 'they', 'would', 'our', 'from', 'all', 'an', 'what', 's',
-                    'them', 'was', 'but', 'For', 'What']
+                    'them', 'was', 'but', 'For', 'What', 'It']
     two_or_more = {}
     for key, value in items.iteritems():
         if value > 1:
