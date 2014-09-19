@@ -29,13 +29,6 @@ def run():
         print scrub(comment)
     else:
         return
-count = 1
-while True:
-    if :
-        run()
-    count += 1
-    else:
-        count+=1
-        continue;
+run()
 
 
