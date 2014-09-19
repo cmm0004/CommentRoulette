@@ -1,9 +1,6 @@
 from random import randrange
-import re
-import urllib
 from collections import Counter
-import sys
-from datetime import time
+import re, urllib, sys, time, datetime
 
 def merge(d1, d2, merge_fn=lambda x,y:y):
     
@@ -63,18 +60,21 @@ def reduce_dict(items):
             specific[key] = value
     return specific
     
-iters = 0
+iters = 1
 words_of_the_day = {}
-while iters < 10:
+while iters < 12:
     if words_of_the_day:
         merge(words_of_the_day, run(), lambda x,y: x+y)
     else:
         words_of_the_day = run()
 
-    time.sleep(5)
-    print words_of_the_day
+    time.sleep(3600)
+    
     iters += 1
-            
+    print iters
 
+f = open((str(sys.argv[1])+'_'+ str(datetime.date.today()) + '.txt'), 'w')
+f.write(str(words_of_the_day))
+f.close()
 
 
