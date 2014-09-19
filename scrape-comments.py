@@ -1,7 +1,5 @@
-from random import randrange
 import re
 import urllib
-import sys
 
 def scrub(comment):
     
