@@ -4,6 +4,16 @@ import urllib
 from collections import Counter
 import sys
 
+def paging():
+    
+    if len(sys.argv) == 3:
+        return '?count=' + str(sys.argv[2])
+        
+        
+        
+    else:
+        return ''
+
 def scrub(comment):
     
     entity_match = re.compile(r'&#(\d+);|&(\w+);|<(.+)>|</(\w+)>')
@@ -20,7 +30,7 @@ def count(lst):
     
 def run():
  
-    socket = urllib.urlopen("http://www.reddit.com/r/" + sys.argv[1] + "/comments/")
+    socket = urllib.urlopen("http://www.reddit.com/r/" + sys.argv[1] + "/comments/" + paging())
     subreddit = socket.geturl()
     
     htmlSource = socket.read()
