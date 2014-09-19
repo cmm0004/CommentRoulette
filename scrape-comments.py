@@ -1,7 +1,7 @@
 from random import randrange
 import re
 import urllib
-
+import sys
 
 def scrub(comment):
     
@@ -15,10 +15,8 @@ def run():
     subreddit = socket.geturl()
     if subreddit == "http://www.reddit.com/r/random":
         return
-    #print subreddit
     socket.close()
     subreddit_comments_socket = urllib.urlopen(subreddit + "comments/")
-    #print subreddit_comments_socket.geturl()
     htmlSource = subreddit_comments_socket.read()
 
     subreddit_comments_socket.close()
