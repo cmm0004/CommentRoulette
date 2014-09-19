@@ -3,9 +3,7 @@ import re
 import urllib
 from collections import Counter
 import sys
-
-common_words = ['the', 'be', 'to', 'of', 'and', 'a', 'in', 'that', 'have', 'I',
-                'it','for','not']
+reddit = sys.argv[1]
 def scrub(comment):
     
     entity_match = re.compile(r'&#(\d+);|&(\w+);|<(.+)>|</(\w+)>')
@@ -21,7 +19,7 @@ def count(lst):
     return Counter(countlst)
 
 def run():
-    socket = urllib.urlopen("http://www.reddit.com/r/%s/comments/", % sys.argv[1])
+    socket = urllib.urlopen("http://www.reddit.com/r/" + reddit + "/comments/")
     subreddit = socket.geturl()
     
     htmlSource = socket.read()
@@ -42,7 +40,7 @@ def reduce_dict(items):
     common_words = ['the', 'be', 'to', 'of', 'and', 'a', 'in', 'that', 'have', 'I',
                 'it','for','not', 'is', 'just', 'even', 'here', 'you', 'should', 'their',
                     'only', 'when', 'after', 'then', 'than', 'those', 'there', 'has',
-                    'been', 'they']
+                    'been', 'they', 'would', 'our', 'from', 'all', 'an', 'what']
     two_or_more = {}
     for key, value in items.iteritems():
         if value > 1:
