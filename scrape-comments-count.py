@@ -15,8 +15,8 @@ def count(lst):
     countlst = []
     for string in lst:
       s = string.split()
-      countlist += s
-     return Counter(countlist)
+      countlst += s
+    return Counter(countlst)
 
 def run():
     socket = urllib.urlopen("http://www.reddit.com/r/news/comments")
@@ -30,8 +30,9 @@ def run():
     if len(result) >= 1:
         
         for x in result:
-            scrub(x)
-            lst_of_comments.append(x)
+            
+            
+            lst_of_comments.append(scrub(x))
     print count(lst_of_comments)
 
 run()
